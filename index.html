@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BALEA — Tarif Fenwick Usine de Cenon · 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ════════════════════════════════════════════
+   BALEA × FENWICK-LINDE BRAND SYSTEM
+   ● Navbar    : #1a1a2e
+   ● Fond      : #ffffff
+   ● Alt       : #f5f6f8
+   ● Accent    : #E2000F (rouge Fenwick-Linde)
+   ● Accent2   : #c50000
+   ════════════════════════════════════════════ */
+
+:root {
+  --navy:      #1a1a2e;
+  --navy2:     #12122a;
+  --bg:        #ffffff;
+  --bg-alt:    #f5f6f8;
+  --bg-alt2:   #eef0f4;
+  --border:    #e2e4ea;
+  --red:       #E2000F;
+  --red2:      #c50000;
+  --red-pale:  #fff0f0;
+  --red-mid:   rgba(226,0,15,0.08);
+  --text:      #1a1a2e;
+  --text2:     #3a3a4a;
+  --muted:     #8a8a9a;
+  --muted2:    #b0b0c0;
+  --white:     #ffffff;
+  --warn:      #f6ad55;
+  --shadow:    0 1px 3px rgba(26,26,46,0.08), 0 4px 16px rgba(26,26,46,0.05);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text2);
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  background: var(--navy);
+  position: sticky;
+  top: 0;
+  z-index: 300;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+}
+.navbar-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.logo { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+.logo-wordmark { font-size: 26px; font-weight: 900; letter-spacing: 5px; color: var(--white); text-transform: uppercase; }
+.logo-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.2); }
+.logo-subtitle { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: rgba(255,255,255,0.45); text-transform: uppercase; line-height: 1.4; }
+.nav-right { display: flex; align-items: center; gap: 28px; }
+.nav-link { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: rgba(255,255,255,0.6); text-decoration: none; text-transform: uppercase; transition: color 0.15s; }
+.nav-link:hover { color: var(--red); }
+.nav-cta { padding: 8px 20px; background: var(--red); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; text-decoration: none; transition: background 0.15s; }
+.nav-cta:hover { background: var(--red2); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 45%; height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(226,0,15,0.05) 100%);
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.hero::after {
+  content: '';
+  position: absolute; left: 0; top: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.hero-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 72px 32px 64px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 3px;
+  color: var(--red); text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before { content: ''; width: 32px; height: 2px; background: var(--red); flex-shrink: 0; }
+.hero-h1 { font-size: 46px; font-weight: 900; line-height: 1.05; color: var(--white); letter-spacing: -0.5px; margin-bottom: 16px; }
+.hero-h1 em { font-style: normal; color: var(--red); }
+.hero-desc { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.5); max-width: 520px; line-height: 1.7; margin-top: 12px; }
+.hero-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 28px 32px;
+  min-width: 240px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.conf-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(226,0,15,0.12); border: 1px solid rgba(226,0,15,0.3);
+  color: #fc8181; font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  padding: 5px 12px; border-radius: 2px; text-transform: uppercase;
+}
+.validity-row { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px; }
+.validity-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 4px; }
+.validity-value { font-family: 'Roboto Mono', monospace; font-size: 12px; color: var(--red); font-weight: 500; }
+
+/* ── INFO BAND ── */
+.info-band { background: var(--bg-alt); border-bottom: 1px solid var(--border); }
+.info-band-inner {
+  max-width: 1160px; margin: 0 auto; padding: 0 32px;
+  display: flex; gap: 0;
+}
+.ib-item {
+  flex: 1; display: flex; align-items: center; gap: 10px;
+  padding: 16px 24px 16px 0;
+  font-size: 12px; color: var(--muted);
+  border-right: 1px solid var(--border);
+}
+.ib-item:last-child { border-right: none; }
+.ib-item:first-child { padding-left: 0; }
+.ib-item strong { color: var(--text); font-weight: 600; }
+.ib-item a { color: var(--red2); text-decoration: none; font-weight: 600; }
+.ib-item a:hover { text-decoration: underline; }
+.ib-icon { color: var(--red); flex-shrink: 0; }
+
+/* ── MAIN ── */
+.main { max-width: 1160px; margin: 0 auto; padding: 0 32px 80px; }
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  display: flex; align-items: center;
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+  margin-bottom: 48px; flex-wrap: wrap; gap: 8px;
+}
+.filter-label { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; color: var(--muted); text-transform: uppercase; margin-right: 4px; white-space: nowrap; }
+.f-btn {
+  padding: 7px 16px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 3px; font-family: 'Raleway', sans-serif; font-size: 11px;
+  font-weight: 600; color: var(--muted); cursor: pointer; transition: all 0.15s;
+  letter-spacing: 0.5px; white-space: nowrap;
+}
+.f-btn:hover { border-color: var(--red); color: var(--red2); }
+.f-btn.active { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.f-search {
+  margin-left: auto; padding: 8px 16px;
+  border: 1px solid var(--border); border-radius: 3px;
+  font-family: 'Raleway', sans-serif; font-size: 12px;
+  color: var(--text); background: var(--bg); outline: none; width: 220px;
+  transition: border-color 0.15s;
+}
+.f-search::placeholder { color: var(--muted2); }
+.f-search:focus { border-color: var(--red); }
+
+/* ── SECTION ── */
+.section { margin-bottom: 56px; animation: fadeUp 0.5s both; }
+.section:nth-child(1) { animation-delay: 0.00s; }
+.section:nth-child(2) { animation-delay: 0.07s; }
+.section:nth-child(3) { animation-delay: 0.14s; }
+.section:nth-child(4) { animation-delay: 0.21s; }
+.section:nth-child(5) { animation-delay: 0.28s; }
+.section:nth-child(6) { animation-delay: 0.35s; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+.sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.sec-accent { width: 4px; height: 32px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
+.sec-num { font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 1px; font-family: 'Roboto Mono', monospace; }
+.sec-title { font-size: 16px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); }
+.sec-line { flex: 1; height: 1px; background: var(--border); }
+.sec-count { font-family: 'Roboto Mono', monospace; font-size: 10px; color: var(--muted2); background: var(--bg-alt); border: 1px solid var(--border); padding: 2px 8px; border-radius: 10px; }
+
+/* ── TABLE ── */
+.table-wrap { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); }
+table { width: 100%; border-collapse: collapse; }
+thead { background: var(--navy); }
+thead th {
+  padding: 13px 16px; text-align: left;
+  font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
+  color: rgba(255,255,255,0.5); text-transform: uppercase; white-space: nowrap;
+}
+th.price-th { text-align: right; color: var(--red); }
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:nth-child(even):not(.sub-row) { background: var(--bg-alt); }
+tbody tr:hover:not(.sub-row) { background: var(--red-pale) !important; }
+
+td { padding: 13px 16px; vertical-align: middle; }
+.td-ref {
+  font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 500;
+  color: var(--navy); white-space: nowrap;
+  background: var(--bg-alt2); border-right: 2px solid var(--border);
+}
+.td-desc { font-size: 13px; font-weight: 400; color: var(--text2); line-height: 1.5; }
+.td-desc small { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; font-weight: 400; }
+.td-price {
+  text-align: right; font-family: 'Roboto Mono', monospace;
+  font-size: 15px; font-weight: 700; color: var(--navy); white-space: nowrap;
+}
+.td-price.pending { color: var(--muted); font-size: 11px; font-family: 'Raleway', sans-serif; font-style: italic; font-weight: 500; }
+
+/* ── ILLUSTRATION BUTTON ── */
+.illus-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 9px; font-weight: 700; letter-spacing: 1px;
+  color: var(--red2); text-decoration: none;
+  border: 1px solid rgba(226,0,15,0.35);
+  padding: 5px 10px; border-radius: 2px;
+  text-transform: uppercase; cursor: pointer;
+  background: var(--red-pale); white-space: nowrap;
+  transition: all 0.15s;
+  font-family: 'Raleway', sans-serif;
+}
+.illus-btn:hover { background: var(--red); border-color: var(--red); color: var(--white); }
+.illus-btn svg { flex-shrink: 0; }
+
+/* Sub row */
+.sub-row td {
+  background: var(--navy); padding: 7px 16px;
+  font-size: 9px; font-weight: 700; letter-spacing: 3px;
+  color: var(--red); text-transform: uppercase;
+}
+
+/* Warn badge */
+.warn-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(246,173,85,0.12); border: 1px solid rgba(246,173,85,0.35);
+  color: #d97706; font-size: 9px; font-weight: 700;
+  padding: 2px 7px; border-radius: 2px; margin-left: 8px;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+
+/* ── PREVIEW PANEL ── */
+.preview-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(26,26,46,0.65);
+  backdrop-filter: blur(4px);
+}
+.preview-overlay.open { display: flex; align-items: center; justify-content: center; animation: fadeIn 0.2s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.preview-panel {
+  background: var(--white);
+  width: 90vw; max-width: 1000px;
+  height: 88vh;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+  animation: slideUp 0.25s;
+}
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.preview-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--navy);
+  flex-shrink: 0;
+  gap: 16px;
+}
+.preview-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--white); text-transform: uppercase; flex: 1; }
+.preview-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.preview-open-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 700; letter-spacing: 1px;
+  color: var(--white); text-decoration: none;
+  background: var(--red); border: none;
+  padding: 7px 14px; border-radius: 2px;
+  text-transform: uppercase; cursor: pointer; transition: background 0.15s;
+  font-family: 'Raleway', sans-serif;
+}
+.preview-open-btn:hover { background: var(--red2); }
+.preview-close-btn {
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.1); border: none;
+  border-radius: 3px; color: var(--white);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; transition: background 0.15s; line-height: 1;
+}
+.preview-close-btn:hover { background: rgba(255,255,255,0.2); }
+
+.preview-iframe-wrap { flex: 1; position: relative; background: var(--bg-alt); }
+.preview-iframe-wrap iframe { width: 100%; height: 100%; border: none; }
+.preview-loading {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 16px; background: var(--bg-alt);
+  font-size: 13px; color: var(--muted); font-family: 'Raleway', sans-serif;
+}
+.preview-loading .spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--red);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── FOOTER ── */
+footer { background: var(--navy); color: rgba(255,255,255,0.4); }
+.footer-top {
+  max-width: 1160px; margin: 0 auto; padding: 40px 32px 32px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-col-title { font-size: 9px; font-weight: 700; letter-spacing: 3px; color: var(--red); text-transform: uppercase; margin-bottom: 12px; }
+.footer-col p { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.45); }
+.footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+.footer-col a:hover { color: var(--red); }
+.footer-logo-large { font-size: 32px; font-weight: 900; letter-spacing: 7px; color: var(--white); text-transform: uppercase; margin-bottom: 8px; }
+.footer-bottom {
+  max-width: 1160px; margin: 0 auto; padding: 20px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom .left { font-family: 'Roboto Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 1px; }
+.footer-bottom .left strong { color: var(--red); }
+.footer-bottom .right { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-h1 { font-size: 32px; }
+  .info-band-inner { flex-direction: column; }
+  .ib-item { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 0; }
+  .footer-top { grid-template-columns: 1fr; }
+  .f-search { width: 100%; margin-left: 0; }
+  .nav-right { display: none; }
+  .preview-panel { width: 98vw; height: 92vh; }
+}
+
+/* ── IMAGE MODAL ── */
+.img-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 600;
+  background: rgba(10,10,20,0.85);
+  backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+}
+.img-overlay.open { display: flex; animation: fadeIn 0.2s; }
+.img-modal {
+  background: var(--navy);
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex; flex-direction: column;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  animation: slideUp 0.25s;
+}
+.img-modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 18px; background: var(--navy2); flex-shrink: 0;
+}
+.img-modal-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--white); text-transform: uppercase; }
+.img-modal-close {
+  width: 30px; height: 30px; background: rgba(255,255,255,0.1);
+  border: none; border-radius: 3px; color: var(--white);
+  cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.img-modal-close:hover { background: var(--red); }
+.img-modal-body { padding: 16px; display: flex; align-items: center; justify-content: center; }
+.img-modal-body img { max-width: 80vw; max-height: 75vh; object-fit: contain; border-radius: 4px; display: block; }
+
+/* Boutons côte à côte */
+.illus-cell { display: flex; gap: 4px; flex-wrap: wrap; }
+.illus-btn.photo { background: #f0f7ff; border-color: rgba(59,130,246,0.4); color: #1d4ed8; }
+.illus-btn.photo:hover { background: #2563eb; border-color: #2563eb; color: var(--white); }
+
+/* ── ML NOTICE ── */
+.ml-notice {
+  display: block;
+  font-size: 11px;
+  font-style: italic;
+  color: #e8a0a5;
+  background: rgba(226,0,15,0.04);
+  border-left: 2px solid rgba(226,0,15,0.2);
+  padding: 3px 8px;
+  margin-top: 4px;
+  border-radius: 0 2px 2px 0;
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a class="logo" href="https://www.balea.com" target="_blank">
+      <div class="logo-wordmark" style="display:flex;align-items:center;gap:10px;"><img src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/logo_balea.jpg" alt="BALEA" style="height:36px;width:auto;object-fit:contain;border-radius:2px;filter:brightness(0) invert(1);opacity:0.9;"></div>
+      <div class="logo-divider"></div>
+      <div class="logo-subtitle">Systèmes de<br>pesage embarqué</div>
+    </a>
+    <div class="nav-right">
+      <a class="nav-link" href="https://www.balea.com/preparation-colis/" target="_blank">Nos solutions</a>
+      <a class="nav-link" href="https://www.balea.com/service/" target="_blank">Services</a>
+      <a class="nav-link" href="https://www.balea.com/balea-societe/" target="_blank">À propos</a>
+      <a class="nav-cta" href="https://www.balea.com/contact/" target="_blank">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Fenwick Usine de Cenon — Price List 2026 / 2027</div>
+      <h1 class="hero-h1">Tarif <em>Fenwick<br>Usine de Cenon</em></h1>
+      <p class="hero-desc">Catalogue de tarification pour les modifications structurelles, équipements, interfaces utilisateur et options fourches sur chariots élévateurs Fenwick / Linde.</p>
+    </div>
+    <div class="hero-card">
+      <img src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/logo_linde_fenwick.jpg" alt="Fenwick Linde" style="width:100%;height:48px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.6;margin-bottom:4px;"><div class="conf-tag">■ &nbsp;Price List — Confidentiel</div>
+      <div class="validity-row">
+        <div class="validity-label">Période de validité</div>
+        <div class="validity-value">25/03/2026 → 25/03/2027</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INFO BAND ══ -->
+<div class="info-band">
+  <div class="info-band-inner">
+    <div class="ib-item">
+      <svg class="ib-icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+      <span><strong>8, Avenue du Grand Chêne</strong> — Z.A. Les Avants, F-34270 Saint Mathieu de Tréviers</span>
+    </div>
+    <div class="ib-item">
+      <svg class="ib-icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+      <span><strong>+33 (0)4 67 55 20 20</strong> — Fax : +33 (0)4 67 55 22 43</span>
+    </div>
+    <div class="ib-item">
+      <svg class="ib-icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+      <a href="/cdn-cgi/l/email-protection#c7a4a8a9b3a6a4b387a5a6aba2a6e9a4a8aa"><span class="__cf_email__" data-cfemail="4e2d21203a2f2d3a0e2c2f222b2f602d2123">[email&#160;protected]</span></a>
+    </div>
+    <div class="ib-item">
+      <svg class="ib-icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3"/></svg>
+      <a href="https://www.balea.com" target="_blank">www.balea.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+
+  <div class="filter-bar">
+    <span class="filter-label">Filtrer :</span>
+    <button class="f-btn active" onclick="navTo('all',this)">Tout afficher</button>
+    <button class="f-btn" onclick="navTo('base',this)">Modif. de base</button>
+    <button class="f-btn" onclick="navTo('equip',this)">Équipements</button>
+    <button class="f-btn" onclick="navTo('iface',this)">Interface</button>
+    <button class="f-btn" onclick="navTo('metro',this)">Métrologie</button>
+    <button class="f-btn" onclick="navTo('ifopts',this)">Options Interface</button>
+    <button class="f-btn" onclick="navTo('fourches',this)">Fourches</button>
+    <input class="f-search" type="text" placeholder="Rechercher une référence…" oninput="searchTable(this.value)">
+  </div>
+
+  <!-- 01 ─ MODIFICATION STRUCTURELLE -->
+  <div class="section" data-section="base">
+    <div class="sec-head">
+      <div class="sec-accent"></div><span class="sec-num">01</span>
+      <span class="sec-title">Modification Structurelle de Base</span>
+      <div class="sec-line"></div><span class="sec-count">5 réf.</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th style="width:120px">Réf. Com.</th><th>Désignation</th>
+        <th style="width:120px">Illustration</th>
+        <th class="price-th" style="width:150px">Tarif FW</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-ref">TPE</td>
+          <td class="td-desc">T16 / T18 / T20 chassis 1156 ou 131<small>Chassis en kit</small></td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/0019bc33-6bee-43b5-903c-423f9b12c1fe','TPE — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/transpalette_linde_profil.jpg','TPE — Transpalette peseur')">📷 Photo</button></div></td>
+          <td class="td-price">3 583 €</td>
+        </tr>
+        <tr>
+          <td class="td-ref">TPE FW</td>
+          <td class="td-desc">T16 / T18 / T20 chassis KGPT-1155<small>Les fourches sont soudées par FW</small></td>
+          <td></td>
+          <td class="td-price">2 947 €</td>
+        </tr>
+        <tr>
+          <td class="td-ref">TPG</td>
+          <td class="td-desc">L12 - L14 AP/SP, D06-D08, D12 - D14 AP/SP</td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/12de6870-2108-4ae5-b7aa-74f870ff14d7','TPG — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/gerbeur_electrique_leve.jpg','TPG — Gerbeur peseur')">📷 Photo</button></div></td>
+          <td class="td-price">4 532 €</td>
+        </tr>
+        <tr>
+          <td class="td-ref">CPG</td>
+          <td class="td-desc">T16L largeur 540 — autres largeurs sur demande<small>L12, D06-D08, D12-D14 AP/SP — L20 hors norme 3834 (dérogation à prévoir)</small></td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/4eacd496-98e5-463f-b5a7-0e9e9430fb42','CPG — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/chariot-picking-1.png','CPG — Chariot picking peseur')">📷 Photo</button></div></td>
+          <td class="td-price">5 013 €</td>
+        </tr>
+        <tr>
+          <td class="td-ref">CPG FW</td>
+          <td class="td-desc">L14 L16 L20 plastron fourni par FW<small>Hors mât triplex</small></td>
+          <td></td>
+          <td class="td-price">4 358 €</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- 02 ─ ÉQUIPEMENTS OBLIGATOIRES -->
+  <div class="section" data-section="equip">
+    <div class="sec-head">
+      <div class="sec-accent"></div><span class="sec-num">02</span>
+      <span class="sec-title">Équipements Obligatoires</span>
+      <div class="sec-line"></div><span class="sec-count">3 réf.</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th style="width:120px">Réf. Com.</th><th>Désignation</th>
+        <th style="width:120px">Illustration</th>
+        <th class="price-th" style="width:150px">Tarif FW</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="td-ref">Support</td><td class="td-desc">Support tout indicateur sur tous vecteurs</td><td></td><td class="td-price">252 €</td></tr>
+        <tr><td class="td-ref">Rotate</td><td class="td-desc">Support rotatif pour mât du N20<small>Pour DCO60 ou DCO200</small></td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/suppor%20n20.jpg','Rotate — Support rotatif N20')">📷 Photo</button></div></td><td class="td-price">430 €</td></tr>
+        <tr><td class="td-ref">Rider</td><td class="td-desc">Sur tous les transpalettes autoportés<small>Ex : T20-SF, N20, etc.</small></td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/preparateur_commande_n20.jpg','Rider — Support autoporté')">📷 Photo</button></div></td><td class="td-price">403 €</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- 03 ─ INTERFACE UTILISATEUR -->
+  <div class="section" data-section="iface">
+    <div class="sec-head">
+      <div class="sec-accent"></div><span class="sec-num">03</span>
+      <span class="sec-title">Interface Utilisateur</span>
+      <div class="sec-line"></div><span class="sec-count">3 réf.</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th style="width:120px">Réf. Com.</th><th>Désignation</th>
+        <th style="width:120px">Illustration</th>
+        <th class="price-th" style="width:150px">Tarif FW</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-ref">TEO</td>
+          <td class="td-desc">Indicateur de pesage standard<small>Avec possibilité d'option</small></td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/69516db2-83bd-4f0c-922e-6b7c5bcf3bef','TEO — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/indicateur_pesage_teo.jpg','TEO — Indicateur de pesage')">📷 Photo</button></div></td>
+          <td class="td-price">792 €</td>
+        </tr>
+        <tr>
+          <td class="td-ref">DCO60W11</td>
+          <td class="td-desc">Informatique embarquée tactile pour projets spéciaux</td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/0df95aab-cc59-420e-8c6f-b8010bbb6ec7','DCO60W11 — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/terminal_logistique_DCO.jpg','DCO60W11 — Terminal DCO60')">📷 Photo</button></div></td>
+          <td class="td-price pending">Sur demande</td>
+        </tr>
+        <tr>
+          <td class="td-ref">DCO200W11</td>
+          <td class="td-desc">Informatique embarquée tactile pour projets spéciaux<small>Nouveau Panel PC en cours de refonte</small></td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/5d3982a0-70ac-431e-be8b-7ba0cde7fd27','DCO200W11 — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/tablette_industrielle_weo.jpg','DCO200W11 — Tablette WEO')">📷 Photo</button></div></td>
+          <td class="td-price pending">Sur demande</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- 04 ─ MÉTROLOGIE -->
+  <div class="section" data-section="metro">
+    <div class="sec-head">
+      <div class="sec-accent"></div><span class="sec-num">04</span>
+      <span class="sec-title">Options Métrologiques</span>
+      <div class="sec-line"></div><span class="sec-count">5 réf.</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th style="width:120px">Réf. Com.</th><th>Désignation</th>
+        <th style="width:120px">Illustration</th>
+        <th class="price-th" style="width:150px">Tarif FW</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="td-ref">3000kg</td><td class="td-desc">Porté 3T pour le T30<small>Ou version 6 Capteurs pour montages spécifiques</small></td><td></td><td class="td-price">1 234 €</td></tr>
+        <tr><td class="td-ref">MR</td><td class="td-desc">Multi étendu à partir de 100g<small>Selon étude de cas</small></td><td></td><td class="td-price">501 €</td></tr>
+        <tr><td class="td-ref">200g</td><td class="td-desc">Précision 0 → 600 kg / e = 200g<small>Puis de 600 → 1500 kg / e = 500g</small></td><td></td><td class="td-price">501 €</td></tr>
+        <tr><td class="td-ref">WIM</td><td class="td-desc">Précision 0 → 1000 kg / e = 500g</td><td></td><td class="td-price">501 €</td></tr>
+        <tr><td class="td-ref">ML</td><td class="td-desc">Métrologie Légale CLASSE III ou CLASSE IV <span class="warn-tag">⚠ Attention</span><span class="ml-notice">⚠ À communiquer impérativement au client final en Métrologie Légale</span></td><td></td><td class="td-price">705 €</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- 05 ─ OPTIONS INTERFACE -->
+  <div class="section" data-section="ifopts">
+    <div class="sec-head">
+      <div class="sec-accent"></div><span class="sec-num">05</span>
+      <span class="sec-title">Options Interface</span>
+      <div class="sec-line"></div><span class="sec-count">10 réf.</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th style="width:120px">Réf. Com.</th><th>Désignation</th>
+        <th style="width:120px">Illustration</th>
+        <th class="price-th" style="width:150px">Tarif FW</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-ref">Print1</td>
+          <td class="td-desc">Imprimante ticket simple pour TEO</td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/c74dee7f-8277-4f79-8fb8-02af1dd8079e','Print1 — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/imprimante_ticket_integree.jpg','Print1 — Imprimante ticket')">📷 Photo</button></div></td>
+          <td class="td-price">830 €</td>
+        </tr>
+
+        <tr><td class="td-ref">Wifi_3</td><td class="td-desc">Option Wi-Fi — 2.4GHz / 5GHz, Boitier MOXA AWK, TEO uniquement<small>+ Protocole de communication pour interface matériel BALEA avec informatique tierce</small></td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Wifi.jpg','Wifi_3 — Module Wi-Fi')">📷 Photo</button></div></td><td class="td-price">1 448 €</td></tr>
+        <tr><td class="td-ref">BLUETOOTH</td><td class="td-desc">Option Bluetooth pour TEO<small>Pour périphérique</small></td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Bluetooth.jpg','BLUETOOTH — Module BT')">📷 Photo</button></div></td><td class="td-price">808 €</td></tr>
+        <tr><td class="td-ref">USB</td><td class="td-desc">Mass Storage USB pour TEO</td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/USB.jpg','USB — Mass Storage USB')">📷 Photo</button></div></td><td class="td-price pending">À définir</td></tr>
+        <tr><td class="td-ref">RS232</td><td class="td-desc">Option RS232 pour TEO<small>+ Protocole de communication pour interface BALEA avec informatique tierce</small></td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/RS232.jpg','RS232 — Option RS232')">📷 Photo</button></div></td><td class="td-price pending">À définir</td></tr>
+        <tr><td class="td-ref">COLD</td><td class="td-desc">Option Grand Froid HML uniquement — pour TEO</td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Cold.jpg','COLD — Option Grand Froid')">📷 Photo</button></div></td><td class="td-price">410 €</td></tr>
+        <tr><td class="td-ref">SEUILS</td><td class="td-desc">Option Seuil (Sortie TOR) pour TEO</td><td></td><td class="td-price">199 €</td></tr>
+        <tr>
+          <td class="td-ref">XBS</td>
+          <td class="td-desc">Kit XBS déporté DCO60 – TEO</td>
+          <td><button class="illus-btn" onclick="openPreview('https://drive.google.com/file/d/19rVI_9GM8g-D4D66y4PC-1J_w2oPWE45/view','XBS — Document')">👁 Aperçu</button></td>
+          <td class="td-price pending">Sur demande</td>
+        </tr>
+        <tr><td class="td-ref">3P-5036</td><td class="td-desc">Balance détail additionnelle + capot batterie N20/T20SP<small>Projet SOLEA WCS sur TPE uniquement</small></td><td></td><td class="td-price">2 805 €</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- 06 ─ FOURCHES -->
+  <div class="section" data-section="fourches">
+    <div class="sec-head">
+      <div class="sec-accent"></div><span class="sec-num">06</span>
+      <span class="sec-title">Options Caractéristiques des Fourches</span>
+      <div class="sec-line"></div><span class="sec-count">12 réf.</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th style="width:120px">Réf. Com.</th><th>Désignation</th>
+        <th style="width:120px">Illustration</th>
+        <th class="price-th" style="width:150px">Tarif FW</th>
+      </tr></thead>
+      <tbody>
+        <tr class="sub-row"><td colspan="4">— Matériau</td></tr>
+        <tr><td class="td-ref">Inox</td><td class="td-desc">Sur TPE / TPG — Fourches recouvrantes Inox en 1150mm</td><td></td><td class="td-price">879 €</td></tr>
+        <tr class="sub-row"><td colspan="4">— Dosserets</td></tr>
+        <tr>
+          <td class="td-ref">03-5397</td>
+          <td class="td-desc">Dosseret sur pesage pour TPE / TPG — H = 1186 mm</td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://drive.google.com/file/d/1pjdCWfYrcm4CiAaAX_2JpBmR-C7mh6Fk/view','03-5397 — Document')">📄 Doc</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Dosseret.jpg','03-5397 — Dosseret H1186')">📷 Photo</button></div></td>
+          <td class="td-price">493 €</td>
+        </tr>
+        <tr>
+          <td class="td-ref">03-5381</td>
+          <td class="td-desc">Dosseret sur pesage pour TPE / TPG — H = 736 mm</td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://drive.google.com/file/d/1OnFkLejN1bJv08J5VcrD3-0EHNzuy8m_/view','03-5381 — Document')">📄 Doc</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Dosseret.jpg','03-5381 — Dosseret H736')">📷 Photo</button></div></td>
+          <td class="td-price">493 €</td>
+        </tr>
+        <tr class="sub-row"><td colspan="4">— Longueurs</td></tr>
+        <tr><td class="td-ref">L600</td><td class="td-desc">Sur TPE / TPG — Fourches de 600 à 1150 mm (à préciser)</td><td></td><td class="td-price">519 €</td></tr>
+        <tr><td class="td-ref">L1600</td><td class="td-desc">Sur TPE — Fourches de 1600mm<small>Hors métrologie légale uniquement</small></td><td></td><td class="td-price">519 €</td></tr>
+        <tr><td class="td-ref">L1800</td><td class="td-desc">Sur TPE — Fourches de 1800mm<small>Hors métrologie légale uniquement</small></td><td></td><td class="td-price">632 €</td></tr>
+        <tr><td class="td-ref">L2000</td><td class="td-desc">Sur TPE — Fourches de 2000mm<small>Hors métrologie légale uniquement</small></td><td></td><td class="td-price">693 €</td></tr>
+        <tr>
+          <td class="td-ref">L2400</td>
+          <td class="td-desc">Sur TPE — Fourches de 2400mm<small>Hors métrologie légale uniquement</small></td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/95cb7935-400f-42cf-8ec5-c734ab42c5bb','L2400 — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/longue%20fourches.jpg','L2400 — Fourches 2400mm')">📷 Photo</button></div></td>
+          <td class="td-price">910 €</td>
+        </tr>
+        <tr>
+          <td class="td-ref">DS</td>
+          <td class="td-desc">Sur TPE — Double balances<small>En supplément de l'option de longueur</small></td>
+          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/95cb7935-400f-42cf-8ec5-c734ab42c5bb','DS — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/longue%20fourches.jpg','DS — Double balances')">📷 Photo</button></div></td>
+          <td class="td-price">1 355 €</td>
+        </tr>
+        <tr class="sub-row"><td colspan="4">— Largeurs</td></tr>
+        <tr><td class="td-ref">W680</td><td class="td-desc">Sur TPE — Fourches de Largeur 680/700 mm</td><td></td><td class="td-price">272 €</td></tr>
+        <tr><td class="td-ref">W950</td><td class="td-desc">Sur TPE — Fourches de Largeur 950/980 mm</td><td></td><td class="td-price">356 €</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-col">
+      <div class="footer-logo-large">BALEA</div>
+      <p>Recherche, développement, conception et fabrication de systèmes de pesage embarqué et préparation de commandes.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <p>8, Avenue du Grand Chêne<br>Z.A. Les Avants<br>F-34270 Saint Mathieu de Tréviers<br><br>
+      <a href="tel:+33467552020">+33 (0)4 67 55 20 20</a><br>
+      <a href="/cdn-cgi/l/email-protection#f1929e9f85909285b193909d9490df929e9c"><span class="__cf_email__" data-cfemail="41222e2f352022350123202d24206f222e2c">[email&#160;protected]</span></a></p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Liens utiles</div>
+      <p>
+        <a href="https://www.balea.com/preparation-colis/" target="_blank">Préparation colis</a><br>
+        <a href="https://www.balea.com/preparation-detail/" target="_blank">Préparation détail</a><br>
+        <a href="https://www.balea.com/service/" target="_blank">Services</a><br>
+        <a href="https://www.fenwick-linde.fr/fr/" target="_blank">Fenwick-Linde</a><br>
+        <a href="https://www.balea.com/contact/" target="_blank">Nous contacter</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="left">DOC-COM · Tarif <strong>Fenwick Usine de Cenon</strong> · Tous prix HT · Valide 25/03/2026 → 25/03/2027</div>
+    <div class="right">© BALEA S.A.S — Document confidentiel — Reproduction interdite</div>
+  </div>
+</footer>
+
+<!-- ══ PREVIEW PANEL ══ -->
+<div class="preview-overlay" id="previewOverlay" onclick="closePreviewOutside(event)">
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span class="preview-title" id="previewTitle">Fiche commerciale</span>
+      <div class="preview-actions">
+        <a class="preview-open-btn" id="previewOpenBtn" href="#" target="_blank">↗ Ouvrir dans un nouvel onglet</a>
+        <button class="preview-close-btn" onclick="closePreview()">✕</button>
+      </div>
+    </div>
+    <div class="preview-iframe-wrap">
+      <div class="preview-loading" id="previewLoading">
+        <div class="spinner"></div>
+        <span>Chargement de la fiche…</span>
+      </div>
+      <iframe id="previewIframe" src="" style="opacity:0;transition:opacity 0.3s;position:absolute;inset:0;width:100%;height:100%;"></iframe>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ IMAGE MODAL ══ -->
+<div class="img-overlay" id="imgOverlay" onclick="if(event.target===this)closeImg()">
+  <div class="img-modal">
+    <div class="img-modal-header">
+      <span class="img-modal-title" id="imgModalTitle">Photo</span>
+      <button class="img-modal-close" onclick="closeImg()">✕</button>
+    </div>
+    <div class="img-modal-body">
+      <img id="imgModalImg" src="" alt="">
+    </div>
+  </div>
+</div>
+
+<script>
+  function navTo(key, btn) {
+    document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.section').forEach(s => {
+      s.style.display = (key === 'all' || s.dataset.section === key) ? '' : 'none';
+    });
+  }
+
+  function searchTable(q) {
+    q = q.toLowerCase().trim();
+    document.querySelectorAll('.section').forEach(s => s.style.display = '');
+    if (!q) return;
+    document.querySelectorAll('tbody tr:not(.sub-row)').forEach(row => {
+      row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  }
+
+  function openPreview(url, title) {
+    document.getElementById('previewTitle').textContent = title;
+    document.getElementById('previewOpenBtn').href = url;
+    document.getElementById('previewLoading').style.display = 'flex';
+    const iframe = document.getElementById('previewIframe');
+    iframe.style.opacity = '0';
+    iframe.src = url;
+    document.getElementById('previewOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function iframeLoaded() {
+    document.getElementById('previewLoading').style.display = 'none';
+    document.getElementById('previewIframe').style.opacity = '1';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('previewIframe').addEventListener('load', iframeLoaded);
+  });
+
+  function closePreview() {
+    document.getElementById('previewOverlay').classList.remove('open');
+    document.getElementById('previewIframe').src = '';
+    document.body.style.overflow = '';
+  }
+
+  function closePreviewOutside(e) {
+    if (e.target === document.getElementById('previewOverlay')) closePreview();
+  }
+
+  function openImg(url, title) {
+    document.getElementById('imgModalTitle').textContent = title;
+    document.getElementById('imgModalImg').src = url;
+    document.getElementById('imgOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeImg() {
+    document.getElementById('imgOverlay').classList.remove('open');
+    document.getElementById('imgModalImg').src = '';
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>
