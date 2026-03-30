@@ -355,6 +355,31 @@ footer { background: var(--navy); color: rgba(255,255,255,0.4); }
   .preview-panel { width: 98vw; height: 92vh; }
 }
 
+
+/* ── INLINE THUMBNAIL ── */
+.td-thumb {
+  padding: 8px 12px;
+  vertical-align: middle;
+}
+.thumb-img {
+  height: 90px;
+  width: auto;
+  max-width: 140px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  display: block;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.thumb-img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.thumb-doc {
+  margin-top: 5px;
+}
+
 /* ── IMAGE MODAL ── */
 .img-overlay {
   display: none;
@@ -499,7 +524,7 @@ footer { background: var(--navy); color: rgba(255,255,255,0.4); }
         <tr>
           <td class="td-ref">TPE</td>
           <td class="td-desc">T16 / T18 / T20 chassis 1156 ou 131<small>Chassis en kit</small></td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/0019bc33-6bee-43b5-903c-423f9b12c1fe','TPE — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/transpalette_linde_profil.jpg','TPE — Transpalette peseur')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/transpalette_linde_profil.jpg" alt="TPE — Transpalette peseur" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/transpalette_linde_profil.jpg','TPE — Transpalette peseur')" title="TPE — Transpalette peseur"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/0019bc33-6bee-43b5-903c-423f9b12c1fe','TPE — Fiche commerciale')">📄 Fiche</button></div></td>
           <td class="td-price">3 583 €</td>
         </tr>
         <tr>
@@ -511,13 +536,13 @@ footer { background: var(--navy); color: rgba(255,255,255,0.4); }
         <tr>
           <td class="td-ref">TPG</td>
           <td class="td-desc">L12 - L14 AP/SP, D06-D08, D12 - D14 AP/SP</td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/12de6870-2108-4ae5-b7aa-74f870ff14d7','TPG — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/gerbeur_electrique_leve.jpg','TPG — Gerbeur peseur')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/gerbeur_electrique_leve.jpg" alt="TPG — Gerbeur peseur" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/gerbeur_electrique_leve.jpg','TPG — Gerbeur peseur')" title="TPG — Gerbeur peseur"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/12de6870-2108-4ae5-b7aa-74f870ff14d7','TPG — Fiche commerciale')">📄 Fiche</button></div></td>
           <td class="td-price">4 532 €</td>
         </tr>
         <tr>
           <td class="td-ref">CPG</td>
           <td class="td-desc">T16L largeur 540 — autres largeurs sur demande<small>L12, D06-D08, D12-D14 AP/SP — L20 hors norme 3834 (dérogation à prévoir)</small></td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/4eacd496-98e5-463f-b5a7-0e9e9430fb42','CPG — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/chariot-picking-1.png','CPG — Chariot picking peseur')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/chariot-picking-1.png" alt="CPG — Chariot picking peseur" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/chariot-picking-1.png','CPG — Chariot picking peseur')" title="CPG — Chariot picking peseur"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/4eacd496-98e5-463f-b5a7-0e9e9430fb42','CPG — Fiche commerciale')">📄 Fiche</button></div></td>
           <td class="td-price">5 013 €</td>
         </tr>
         <tr>
@@ -545,8 +570,8 @@ footer { background: var(--navy); color: rgba(255,255,255,0.4); }
       </tr></thead>
       <tbody>
         <tr><td class="td-ref">Support</td><td class="td-desc">Support tout indicateur sur tous vecteurs</td><td></td><td class="td-price">252 €</td></tr>
-        <tr><td class="td-ref">Rotate</td><td class="td-desc">Support rotatif pour mât du N20<small>Pour DCO60 ou DCO200</small></td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/suppor%20n20.jpg','Rotate — Support rotatif N20')">📷 Photo</button></div></td><td class="td-price">430 €</td></tr>
-        <tr><td class="td-ref">Rider</td><td class="td-desc">Sur tous les transpalettes autoportés<small>Ex : T20-SF, N20, etc.</small></td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/preparateur_commande_n20.jpg','Rider — Support autoporté')">📷 Photo</button></div></td><td class="td-price">403 €</td></tr>
+        <tr><td class="td-ref">Rotate</td><td class="td-desc">Support rotatif pour mât du N20<small>Pour DCO60 ou DCO200</small></td><td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/suppor%20n20.jpg" alt="Rotate — Support rotatif N20" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/suppor%20n20.jpg','Rotate — Support rotatif N20')" title="Rotate — Support rotatif N20"></td><td class="td-price">430 €</td></tr>
+        <tr><td class="td-ref">Rider</td><td class="td-desc">Sur tous les transpalettes autoportés<small>Ex : T20-SF, N20, etc.</small></td><td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/preparateur_commande_n20.jpg" alt="Rider — Support autoporté" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/preparateur_commande_n20.jpg','Rider — Support autoporté')" title="Rider — Support autoporté"></td><td class="td-price">403 €</td></tr>
       </tbody>
     </table></div>
   </div>
@@ -568,19 +593,19 @@ footer { background: var(--navy); color: rgba(255,255,255,0.4); }
         <tr>
           <td class="td-ref">TEO</td>
           <td class="td-desc">Indicateur de pesage standard<small>Avec possibilité d'option</small></td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/69516db2-83bd-4f0c-922e-6b7c5bcf3bef','TEO — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/indicateur_pesage_teo.jpg','TEO — Indicateur de pesage')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/indicateur_pesage_teo.jpg" alt="TEO — Indicateur de pesage" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/indicateur_pesage_teo.jpg','TEO — Indicateur de pesage')" title="TEO — Indicateur de pesage"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/69516db2-83bd-4f0c-922e-6b7c5bcf3bef','TEO — Fiche commerciale')">📄 Fiche</button></div></td>
           <td class="td-price">792 €</td>
         </tr>
         <tr>
           <td class="td-ref">DCO60W11</td>
           <td class="td-desc">Informatique embarquée tactile pour projets spéciaux</td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/0df95aab-cc59-420e-8c6f-b8010bbb6ec7','DCO60W11 — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/terminal_logistique_DCO.jpg','DCO60W11 — Terminal DCO60')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/terminal_logistique_DCO.jpg" alt="DCO60W11 — Terminal DCO60" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/terminal_logistique_DCO.jpg','DCO60W11 — Terminal DCO60')" title="DCO60W11 — Terminal DCO60"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/0df95aab-cc59-420e-8c6f-b8010bbb6ec7','DCO60W11 — Fiche commerciale')">📄 Fiche</button></div></td>
           <td class="td-price pending">Sur demande</td>
         </tr>
         <tr>
           <td class="td-ref">DCO200W11</td>
           <td class="td-desc">Informatique embarquée tactile pour projets spéciaux<small>Nouveau Panel PC en cours de refonte</small></td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/5d3982a0-70ac-431e-be8b-7ba0cde7fd27','DCO200W11 — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/tablette_industrielle_weo.jpg','DCO200W11 — Tablette WEO')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/tablette_industrielle_weo.jpg" alt="DCO200W11 — Tablette WEO" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/tablette_industrielle_weo.jpg','DCO200W11 — Tablette WEO')" title="DCO200W11 — Tablette WEO"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/5d3982a0-70ac-431e-be8b-7ba0cde7fd27','DCO200W11 — Fiche commerciale')">📄 Fiche</button></div></td>
           <td class="td-price pending">Sur demande</td>
         </tr>
       </tbody>
@@ -627,15 +652,15 @@ footer { background: var(--navy); color: rgba(255,255,255,0.4); }
         <tr>
           <td class="td-ref">Print1</td>
           <td class="td-desc">Imprimante ticket simple pour TEO</td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/c74dee7f-8277-4f79-8fb8-02af1dd8079e','Print1 — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/imprimante_ticket_integree.jpg','Print1 — Imprimante ticket')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/imprimante_ticket_integree.jpg" alt="Print1 — Imprimante ticket" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/imprimante_ticket_integree.jpg','Print1 — Imprimante ticket')" title="Print1 — Imprimante ticket"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/c74dee7f-8277-4f79-8fb8-02af1dd8079e','Print1 — Fiche commerciale')">📄 Fiche</button></div></td>
           <td class="td-price">830 €</td>
         </tr>
 
-        <tr><td class="td-ref">Wifi_3</td><td class="td-desc">Option Wi-Fi — 2.4GHz / 5GHz, Boitier MOXA AWK, TEO uniquement<small>+ Protocole de communication pour interface matériel BALEA avec informatique tierce</small></td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Wifi.jpg','Wifi_3 — Module Wi-Fi')">📷 Photo</button></div></td><td class="td-price">1 448 €</td></tr>
-        <tr><td class="td-ref">BLUETOOTH</td><td class="td-desc">Option Bluetooth pour TEO<small>Pour périphérique</small></td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Bluetooth.jpg','BLUETOOTH — Module BT')">📷 Photo</button></div></td><td class="td-price">808 €</td></tr>
-        <tr><td class="td-ref">USB</td><td class="td-desc">Mass Storage USB pour TEO</td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/USB.jpg','USB — Mass Storage USB')">📷 Photo</button></div></td><td class="td-price pending">À définir</td></tr>
-        <tr><td class="td-ref">RS232</td><td class="td-desc">Option RS232 pour TEO<small>+ Protocole de communication pour interface BALEA avec informatique tierce</small></td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/RS232.jpg','RS232 — Option RS232')">📷 Photo</button></div></td><td class="td-price pending">À définir</td></tr>
-        <tr><td class="td-ref">COLD</td><td class="td-desc">Option Grand Froid HML uniquement — pour TEO</td><td><div class="illus-cell"><button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Cold.jpg','COLD — Option Grand Froid')">📷 Photo</button></div></td><td class="td-price">410 €</td></tr>
+        <tr><td class="td-ref">Wifi_3</td><td class="td-desc">Option Wi-Fi — 2.4GHz / 5GHz, Boitier MOXA AWK, TEO uniquement<small>+ Protocole de communication pour interface matériel BALEA avec informatique tierce</small></td><td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Wifi.jpg" alt="Wifi_3 — Module Wi-Fi" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Wifi.jpg','Wifi_3 — Module Wi-Fi')" title="Wifi_3 — Module Wi-Fi"></td><td class="td-price">1 448 €</td></tr>
+        <tr><td class="td-ref">BLUETOOTH</td><td class="td-desc">Option Bluetooth pour TEO<small>Pour périphérique</small></td><td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Bluetooth.jpg" alt="BLUETOOTH — Module BT" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Bluetooth.jpg','BLUETOOTH — Module BT')" title="BLUETOOTH — Module BT"></td><td class="td-price">808 €</td></tr>
+        <tr><td class="td-ref">USB</td><td class="td-desc">Mass Storage USB pour TEO</td><td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/USB.jpg" alt="USB — Mass Storage USB" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/USB.jpg','USB — Mass Storage USB')" title="USB — Mass Storage USB"></td><td class="td-price pending">À définir</td></tr>
+        <tr><td class="td-ref">RS232</td><td class="td-desc">Option RS232 pour TEO<small>+ Protocole de communication pour interface BALEA avec informatique tierce</small></td><td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/RS232.jpg" alt="RS232 — Option RS232" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/RS232.jpg','RS232 — Option RS232')" title="RS232 — Option RS232"></td><td class="td-price pending">À définir</td></tr>
+        <tr><td class="td-ref">COLD</td><td class="td-desc">Option Grand Froid HML uniquement — pour TEO</td><td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Cold.jpg" alt="COLD — Option Grand Froid" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Cold.jpg','COLD — Option Grand Froid')" title="COLD — Option Grand Froid"></td><td class="td-price">410 €</td></tr>
         <tr><td class="td-ref">SEUILS</td><td class="td-desc">Option Seuil (Sortie TOR) pour TEO</td><td></td><td class="td-price">199 €</td></tr>
         <tr>
           <td class="td-ref">XBS</td>
@@ -668,13 +693,13 @@ footer { background: var(--navy); color: rgba(255,255,255,0.4); }
         <tr>
           <td class="td-ref">03-5397</td>
           <td class="td-desc">Dosseret sur pesage pour TPE / TPG — H = 1186 mm</td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://drive.google.com/file/d/1pjdCWfYrcm4CiAaAX_2JpBmR-C7mh6Fk/view','03-5397 — Document')">📄 Doc</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Dosseret.jpg','03-5397 — Dosseret H1186')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Dosseret.jpg" alt="03-5397 — Dosseret H1186" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Dosseret.jpg','03-5397 — Dosseret H1186')" title="03-5397 — Dosseret H1186"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://drive.google.com/file/d/1pjdCWfYrcm4CiAaAX_2JpBmR-C7mh6Fk/view','03-5397 — Document')">📄 Doc</button></div></td>
           <td class="td-price">493 €</td>
         </tr>
         <tr>
           <td class="td-ref">03-5381</td>
           <td class="td-desc">Dosseret sur pesage pour TPE / TPG — H = 736 mm</td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://drive.google.com/file/d/1OnFkLejN1bJv08J5VcrD3-0EHNzuy8m_/view','03-5381 — Document')">📄 Doc</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Dosseret.jpg','03-5381 — Dosseret H736')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Dosseret.jpg" alt="03-5381 — Dosseret H736" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/Dosseret.jpg','03-5381 — Dosseret H736')" title="03-5381 — Dosseret H736"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://drive.google.com/file/d/1OnFkLejN1bJv08J5VcrD3-0EHNzuy8m_/view','03-5381 — Document')">📄 Doc</button></div></td>
           <td class="td-price">493 €</td>
         </tr>
         <tr class="sub-row"><td colspan="4">— Longueurs</td></tr>
@@ -685,13 +710,13 @@ footer { background: var(--navy); color: rgba(255,255,255,0.4); }
         <tr>
           <td class="td-ref">L2400</td>
           <td class="td-desc">Sur TPE — Fourches de 2400mm<small>Hors métrologie légale uniquement</small></td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/95cb7935-400f-42cf-8ec5-c734ab42c5bb','L2400 — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/longue%20fourches.jpg','L2400 — Fourches 2400mm')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/longue%20fourches.jpg" alt="L2400 — Fourches 2400mm" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/longue%20fourches.jpg','L2400 — Fourches 2400mm')" title="L2400 — Fourches 2400mm"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/95cb7935-400f-42cf-8ec5-c734ab42c5bb','L2400 — Fiche commerciale')">📄 Fiche</button></div></td>
           <td class="td-price">910 €</td>
         </tr>
         <tr>
           <td class="td-ref">DS</td>
           <td class="td-desc">Sur TPE — Double balances<small>En supplément de l'option de longueur</small></td>
-          <td><div class="illus-cell"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/95cb7935-400f-42cf-8ec5-c734ab42c5bb','DS — Fiche commerciale')">📄 Fiche</button> <button class="illus-btn" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/longue%20fourches.jpg','DS — Double balances')">📷 Photo</button></div></td>
+          <td class="td-thumb"><img class="thumb-img" src="https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/longue%20fourches.jpg" alt="DS — Double balances" onclick="openImg('https://raw.githubusercontent.com/benoitbrement-droid/galerie-entreprise/main/longue%20fourches.jpg','DS — Double balances')" title="DS — Double balances"><div class="thumb-doc"><button class="illus-btn" onclick="openPreview('https://indd.adobe.com/view/95cb7935-400f-42cf-8ec5-c734ab42c5bb','DS — Fiche commerciale')">📄 Fiche</button></div></td>
           <td class="td-price">1 355 €</td>
         </tr>
         <tr class="sub-row"><td colspan="4">— Largeurs</td></tr>
